@@ -609,6 +609,10 @@
             <button class="filter-btn" data-filter="direct" onclick="setFilter('direct')">Direct</button>
             <button class="filter-btn" data-filter="referral" onclick="setFilter('referral')">Referral</button>
             <button class="filter-btn" data-filter="need-referral" onclick="setFilter('need-referral')">Need Referral</button>
+            <button class="filter-btn" data-filter="waiting" onclick="setFilter('waiting')">Waiting</button>
+            <button class="filter-btn" data-filter="in-process" onclick="setFilter('in-process')">In Process</button>
+            <button class="filter-btn" data-filter="accepted" onclick="setFilter('accepted')">Accepted</button>
+            <button class="filter-btn" data-filter="rejected" onclick="setFilter('rejected')">Rejected</button>
         </div>
 
         <div class="applications-grid" id="applicationsGrid"></div>
@@ -948,6 +952,14 @@
                 filtered = filtered.filter(a => a.method === 'Referral');
             } else if (currentFilter === 'need-referral') {
                 filtered = filtered.filter(a => a.needReferral);
+            } else if (currentFilter === 'waiting') {
+                filtered = filtered.filter(a => a.status === 'Applied - Waiting');
+            } else if (currentFilter === 'in-process') {
+                filtered = filtered.filter(a => a.status === 'In Interview Process');
+            } else if (currentFilter === 'accepted') {
+                filtered = filtered.filter(a => a.status === 'Accepted');
+            } else if (currentFilter === 'rejected') {
+                filtered = filtered.filter(a => a.status === 'Rejected');
             }
 
             if (searchTerm) {
