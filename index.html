@@ -825,18 +825,8 @@
                 if (response.ok) {
                     const data = await response.json();
                     if (data.record && Array.isArray(data.record)) {
-                        const cloudApps = data.record;
-                        const localApps = applications;
-                        
-                        // Merge: keep newest based on ID
-                        const merged = [...cloudApps];
-                        localApps.forEach(localApp => {
-                            if (!merged.find(a => a.id === localApp.id)) {
-                                merged.push(localApp);
-                            }
-                        });
-                        
-                        applications = merged;
+                        // Cloud is the source of truth - always use cloud data
+                        applications = data.record;
                         localStorage.setItem('jobApplications', JSON.stringify(applications));
                         console.log('✅ Loaded from cloud successfully');
                     }
