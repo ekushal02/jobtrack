@@ -947,9 +947,9 @@
             let filtered = applications;
 
             if (currentFilter === 'direct') {
-                filtered = filtered.filter(a => a.method === 'Direct Application');
+                filtered = filtered.filter(a => a.method === 'Direct Application' || a.method === 'Both');
             } else if (currentFilter === 'referral') {
-                filtered = filtered.filter(a => a.method === 'Referral');
+                filtered = filtered.filter(a => a.method === 'Referral' || a.method === 'Both');
             } else if (currentFilter === 'need-referral') {
                 filtered = filtered.filter(a => a.needReferral);
             } else if (currentFilter === 'waiting') {
